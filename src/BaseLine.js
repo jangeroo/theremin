@@ -1,5 +1,5 @@
 const BaseLine = (props) => {
-  const thickness = 10;
+  const thickness = 2;
   const baseLineStyle = {
     position: "relative",
     height: thickness,

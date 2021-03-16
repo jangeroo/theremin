@@ -7,6 +7,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <h2>Theremin</h2>
+        <p>Click and drag to play!</p>
         <Theremin />
       </div>
     );
