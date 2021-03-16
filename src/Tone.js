@@ -5,11 +5,7 @@ var oscillator = null;
 var gainNode = null;
 
 export default class Tone extends Component {
-  calculateGain = (amp) => {
-    const gain = amp / 500;
-    console.log("gain:", gain);
-    return gain;
-  };
+  calculateGain = (amp) => amp / 500;
 
   updateTone = () => {
     oscillator.frequency.setTargetAtTime(

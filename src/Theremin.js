@@ -19,7 +19,7 @@ export default class Theremin extends Component {
 
   mouseMove = (event) => {
     this.setState({
-      freq: 2 * event.nativeEvent.offsetX,
+      freq: 2 * event.nativeEvent.offsetX + 80,
       amp: height - event.nativeEvent.offsetY,
     });
   };
@@ -27,6 +27,8 @@ export default class Theremin extends Component {
   handleMouseDown = () => this.setState({ isPlaying: true });
 
   handleMouseUp = () => this.setState({ isPlaying: false });
+
+  handleMouseLeave = () => this.setState({ isPlaying: false });
 
   render() {
     const { freq, amp } = this.state;
@@ -38,6 +40,7 @@ export default class Theremin extends Component {
           onMouseMove={this.mouseMove}
           onMouseDown={this.handleMouseDown}
           onMouseUp={this.handleMouseUp}
+          onMouseLeave={this.handleMouseLeave}
         >
           <BaseLine basePosition={height / 2} length={width} />
           {this.state.isPlaying && (
