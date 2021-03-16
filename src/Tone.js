@@ -2,21 +2,39 @@ import React, { Component } from "react";
 
 const context = new AudioContext();
 var oscillator = null;
+var gainNode = null;
 
 export default class Tone extends Component {
-  setPitch = () => {
-    oscillator.frequency.value = this.props.freq;
+  calculateGain = (amp) => {
+    const gain = amp / 500;
+    console.log("gain:", gain);
+    return gain;
+  };
+
+  updateTone = () => {
+    oscillator.frequency.setTargetAtTime(
+      this.props.freq,
+      context.currentTime,
+      0.01
+    );
+    gainNode.gain.setTargetAtTime(
+      this.calculateGain(this.props.amp),
+      context.currentTime,
+      0.01
+    );
   };
 
   componentDidMount() {
     oscillator = context.createOscillator();
-    this.setPitch();
-    oscillator.connect(context.destination);
+    gainNode = context.createGain();
+    oscillator.connect(gainNode);
+    gainNode.connect(context.destination);
+    this.updateTone();
     oscillator.start(context.currentTime);
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.freq !== prevProps.freq) this.setPitch();
+    if (this.props.freq !== prevProps.freq) this.updateTone();
   }
 
   componentWillUnmount() {

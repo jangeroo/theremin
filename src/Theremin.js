@@ -48,7 +48,7 @@ export default class Theremin extends Component {
               amp={amp}
             />
           )}
-          {this.state.isPlaying && <Tone freq={freq} />}
+          {this.state.isPlaying && <Tone freq={freq} amp={amp} />}
         </div>
         <div>
           Freq: {freq} - Amp: {amp}
