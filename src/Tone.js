@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+var AudioContext = window.AudioContext || window.webkitAudioContext || false;
+if (!AudioContext) alert("Sorry, your browser is not supported");
+
 const context = new AudioContext();
 var oscillator = null;
 var gainNode = null;
