@@ -5,12 +5,11 @@ export default class Sine extends Component {
 
   sineContainerStyle = {
     display: "flex",
-    justifyContent: "space-around",
     position: "absolute",
     top: this.props.basePosition,
   };
 
-  pointStyle = {
+  segmentStyle = {
     height: this.scale * 2,
     width: this.scale,
     borderRadius: "100%",
@@ -27,9 +26,9 @@ export default class Sine extends Component {
           .map((_, i) => {
             return (
               <div
-                className="point"
+                className="segment"
                 style={{
-                  ...this.pointStyle,
+                  ...this.segmentStyle,
                   top: (amp / 3) * Math.sin((freq / 3000) * i) - this.scale / 2,
                 }}
                 key={i}
