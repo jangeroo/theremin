@@ -6,7 +6,8 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <h2>Theremin</h2>
+        <h2>Thereminstrel</h2>
+        <p>Release your inner minstrel with a virtual theremin!</p>
         <p>Click and drag to play!</p>
         <Theremin />
       </div>
